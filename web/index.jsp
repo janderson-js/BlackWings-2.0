@@ -1,6 +1,6 @@
 <%-- 
     Document   : index
-    Created on : 26 de jul. de 2021, 17:10:46
+    Created on : 27 de jul. de 2021, 17:05:37
     Author     : Jandy
 --%>
 
@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <a href="listar_clinte.jsp">Cliente</a>
     </body>
 </html>
