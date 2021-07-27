@@ -8,7 +8,7 @@ public class DataBase {
     public void conectar() throws Exception{
         String user = "root";
         String pass = "";
-        String url = "jdb:mysql://localhost/blackwings2";
+        String url = "jdbc:mysql://localhost/blackwings2";
         Class.forName("com.mysql.jdbc.Driver");
         conn = (Connection) DriverManager.getConnection(url, user, pass);
     }
