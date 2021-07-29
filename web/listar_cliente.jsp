@@ -43,7 +43,7 @@
                                     <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar " /></a>
                                     <input type="button" value="dados" name="dados " />
                                     <input type="button" value="agendar" name="agendar" />
-                                    <input type="button" value="excluir" name="excluir" />
+                                    <a href="#"><input type="button" value="excluir" onclick="excluir(<%=c.getId()%>,'<%=c.getNome()%>')" name="excluir" /></a>
                                 </td>
                             </tr>
                         <% }%>
@@ -54,7 +54,13 @@
                 out.print("ERRO = "+ e);
             }
         %>
-        
+        <script>
+            function excluir(id,nome){
+                if(confirm("Tem certeza que quer excluir o Cliente : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
+                    window.open("excluir_cliente.do?id="+ id, "_self")
+                }
+            }
+        </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
