@@ -40,6 +40,7 @@
                                 <td><%=c.getNome()%></td>
                                 <td><%=c.getCpf()%></td>
                                 <td> 
+                                    <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar " /></a>
                                     <input type="button" value="dados" name="dados " />
                                     <input type="button" value="agendar" name="agendar" />
                                     <input type="button" value="excluir" name="excluir" />
