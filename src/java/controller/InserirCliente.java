@@ -57,6 +57,7 @@ public class InserirCliente extends HttpServlet {
                
                 cDAO.inserirCliente(c);
                 
+                
                 response.sendRedirect("listar_cliente.jsp");
             } catch (Exception e) {
                 out.println("Erro Servlet Inserir : " + e);
