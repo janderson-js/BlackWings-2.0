@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
@@ -11,12 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Cliente;
 import model.ClienteDAO;
 
 /**
  *
- * @author Jandy
+ * @author Janderson
  */
 public class InserirCliente extends HttpServlet {
 
@@ -34,35 +30,42 @@ public class InserirCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InserirCliente</title>");            
+            out.println("<title>Servlet InserirCliente</title>");
             out.println("</head>");
             out.println("<body>");
             try {
-                Cliente c = new Cliente();
-                ClienteDAO cDAO = new ClienteDAO();
-                
                 String nome = request.getParameter("nome");
                 String cpf = request.getParameter("cpf");
                 String senha = request.getParameter("senha");
-                String telefone = request.getParameter("telefone");
                 String telefoneContato = request.getParameter("telefoneContato");
                 String termos = request.getParameter("termos");
-                
+                String telefone = "";
+
+                if (request.getParameter("telefone") != null) {
+                    telefone = "não informado";
+                } else {      
+                    telefone = request.getParameter("telefone");
+                }
+
+                Cliente c = new Cliente();
+
                 c.setNome(nome);
                 c.setCpf(cpf);
                 c.setSenha(senha);
-                c.setTelefone(telefone);
                 c.setTelefoneContato(telefoneContato);
+                c.setTelefone(telefone);
                 c.setTermos(termos);
-                
+
+                ClienteDAO cDAO = new ClienteDAO();
                 cDAO.inserirCliente(c);
                 
                 response.sendRedirect("listar_cliente.jsp");
             } catch (Exception e) {
-                out.print("Erro ao inserir o cliente!! :" + e);
+                out.println("Erro Servlet Inserir : " + e);
             }
             out.println("</body>");
             out.println("</html>");
