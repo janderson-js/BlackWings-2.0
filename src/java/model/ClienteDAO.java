@@ -80,7 +80,7 @@ public class ClienteDAO extends DataBase {
     }
 
     public void deletarCliente(int id) throws Exception {
-        String sql = "DELETE * FROM Cliente WHERE id=?";
+        String sql = "DELETE FROM Cliente WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, id);
