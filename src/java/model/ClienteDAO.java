@@ -52,7 +52,7 @@ public class ClienteDAO extends DataBase {
     }
 
     public void inserirCliente(Cliente c) throws Exception {
-        String sql = "INSET INTO Cliente (nome, cpf, senha, telefone, telefone_contato, termos, data_cadastro) VALUES (?,?,?,?,?,?,NOW())";
+        String sql = "INSERT INTO Cliente (nome, cpf, senha, telefone, telefone_contato, termos, data_cadastro) VALUES (?,?,?,?,?,?,NOW())";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, c.getNome());
