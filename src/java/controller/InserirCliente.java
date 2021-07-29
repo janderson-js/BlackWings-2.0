@@ -38,6 +38,9 @@ public class InserirCliente extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             try {
+                Cliente c = new Cliente();
+                ClienteDAO cDAO = new ClienteDAO();
+                
                 String nome = request.getParameter("nome");
                 String cpf = request.getParameter("cpf");
                 String senha = request.getParameter("senha");
@@ -45,22 +48,13 @@ public class InserirCliente extends HttpServlet {
                 String termos = request.getParameter("termos");
                 String telefone = "";
 
-                if (request.getParameter("telefone") != null) {
-                    telefone = "não informado";
-                } else {      
-                    telefone = request.getParameter("telefone");
-                }
-
-                Cliente c = new Cliente();
-
                 c.setNome(nome);
                 c.setCpf(cpf);
                 c.setSenha(senha);
                 c.setTelefoneContato(telefoneContato);
                 c.setTelefone(telefone);
                 c.setTermos(termos);
-
-                ClienteDAO cDAO = new ClienteDAO();
+               
                 cDAO.inserirCliente(c);
                 
                 response.sendRedirect("listar_cliente.jsp");

@@ -42,7 +42,7 @@ public class ClienteDAO extends DataBase {
             c.setCpf(rs.getString("cpf"));
             c.setSenha(rs.getString("senha"));
             c.setTelefone(rs.getString("telefone"));
-            c.setTelefoneContato(rs.getString("telefone_conatato"));
+            c.setTelefoneContato(rs.getString("telefone_contato"));
             c.setTermos(rs.getString("termos"));
             c.setStatus(rs.getString("status"));
             c.setDataCadastro(rs.getTimestamp("data_cadastro"));
