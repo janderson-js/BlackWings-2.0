@@ -40,8 +40,8 @@
                                 <td><%=c.getNome()%></td>
                                 <td><%=c.getCpf()%></td>
                                 <td> 
-                                    <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar " /></a>
-                                    <input type="button" value="dados" name="dados " />
+                                    <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
+                                    <a href="dados_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="dados" name="dados" /></a>
                                     <input type="button" value="agendar" name="agendar" />
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=c.getId()%>,'<%=c.getNome()%>')" name="excluir" /></a>
                                 </td>
