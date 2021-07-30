@@ -41,7 +41,7 @@ public class ServicoDAO extends DataBase {
     }
     
     public void inserirServico(Servico s) throws Exception{
-        String sql = "INSET INTO Servico (nome, tipo, valor) VALUES (?,?,?)";
+        String sql = "INSERT INTO Servico (nome, tipo, valor) VALUES (?,?,?)";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, s.getNome());
@@ -63,7 +63,7 @@ public class ServicoDAO extends DataBase {
         this.desconectar();
     }
     public void deletarServico(int id) throws Exception{
-        String sql = "DELETE * FROM Servico WHERE id=?";
+        String sql = "DELETE FROM Servico WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, id);
