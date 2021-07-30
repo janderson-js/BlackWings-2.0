@@ -53,8 +53,7 @@
                 <tr>
                     <td colspan="2" style="text-align: center;"><a href="alterar_cliente.jsp?id=<%=c.getId()%>"><button>Alterar</button></a></td>
                 </tr>
-            </table>
-                
+            </table>      
         <%        
                    
             } catch (Exception e) {
