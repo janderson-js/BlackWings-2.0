@@ -20,10 +20,37 @@
 
         </header>
         <main>
-            <h1>Hello World!</h1>
-            <a href="listar_cliente.jsp">Listar Cliente</a><br/>
+            <h1>Hello World!</h1> 
             <a href="listar_servico.jsp">Listar Servico</a><br/>
             <a href="index.jsp">HOME</a><br/>
+            
+            <form method="post" action="inserir_servico.do" enctype="" >
+                <table>
+                    <tr>
+                        <td>Nome</td>
+                        <td><input type="text" name="nome" required=""></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo</td>
+                        <td>
+                            <select id="tipo" name="tipo" required="">
+                                <option value="">Selecione...</option>
+                                <option value="Barba">Barba</option>
+                                <option value="Cabelo">Cabelo</option>
+                                <option value="Outros">Outros</option>
+                                <option value="Promoções">Promoções</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Valor</td>
+                        <td><input type="number" name="valor"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Inserir Serviço"></td>
+                    </tr>
+                </table>
+            </form>
         </main>
         <footer>
 

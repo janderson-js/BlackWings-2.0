@@ -12,6 +12,10 @@
         <servlet-name>ExcluirCliente</servlet-name>
         <servlet-class>controller.ExcluirCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserirServico</servlet-name>
+        <servlet-class>controller.InserirServico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -24,9 +28,14 @@
         <servlet-name>ExcluirCliente</servlet-name>
         <url-pattern>/excluir_cliente.do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserirServico</servlet-name>
+        <url-pattern>/inserir_servico.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
 </web-app>
