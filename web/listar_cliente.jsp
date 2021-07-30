@@ -2,7 +2,7 @@
 <%@page import="model.ClienteDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Cliente"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
      <head>
@@ -29,7 +29,7 @@
                             <th><strong>ID<strong></th>
                             <th><strong>NOME<strong></th>
                             <th><strong>CPF<strong></th>
-                            <th><strong>OPÃ‡Ã•ES</strong></th>
+                            <th><strong>OPÇÕES</strong></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -7,7 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ServicoDAO"%>
 <%@page import="model.Servico"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +41,7 @@
                             <th><strong>NOME<strong></th>
                             <th><strong>TIPO<strong></th>
                             <th><strong>VALOR<strong></th>
-                            <th><strong>OPÃ‡Ã•ES</strong></th>
+                            <th><strong>OPÇÕES</strong></th>
                         </tr>
                     </thead>
                     <tbody>
