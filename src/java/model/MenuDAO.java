@@ -16,7 +16,6 @@ public class MenuDAO extends DataBase {
             m.setId(rs.getInt("id"));
             m.setTitulo(rs.getString("titulo"));
             m.setLink(rs.getString("link"));
-            m.setIcone(rs.getString("icone"));
             lista.add(m);
         }
      this.desconectar();
@@ -34,36 +33,33 @@ public class MenuDAO extends DataBase {
             m.setId(rs.getInt("id"));
             m.setTitulo(rs.getString("titulo"));
             m.setLink(rs.getString("link"));
-            m.setIcone(rs.getString("icone"));
         }
         this.desconectar();
         return m;
     }
     
     public void inserirMenu(Menu m) throws Exception{
-        String sql = "INSET INTO Menu (titulo, link, icone) VALUES (?,?,?)";
+        String sql = "INSERT INTO Menu (titulo, link) VALUES (?,?)";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, m.getTitulo());
         pstm.setString(2, m.getLink());
-        pstm.setString(3, m.getIcone());
         pstm.execute();
         this.desconectar();
     }
     
     public void alterarMenu(Menu m) throws Exception{
-        String sql = "UPDATE Menu SET titulo=?, link=?, icone=? WHERE id=?";
+        String sql = "UPDATE Menu SET titulo=?, link=? WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, m.getTitulo());
-        pstm.setString(2, m.getLink());
-        pstm.setString(3, m.getIcone());
-        pstm.setInt(4, m.getId());
+        pstm.setString(2, m.getLink());;
+        pstm.setInt(3, m.getId());
         pstm.execute();
         this.desconectar();
     }
     public void deletarMenu(int id) throws Exception{
-        String sql = "DELETE * FROM Menu WHERE id=?";
+        String sql = "DELETE  FROM Menu WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, id);
