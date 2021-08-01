@@ -24,7 +24,7 @@
         </header>
         <main>
             <h1>Listar menu!</h1>
-            <a href="listar_menu.jsp">Listar menu</a><br/>
+            <a href="inserir_menu.jsp">Inserir menu</a><br/>
             <a href="index.jsp">HOME</a><br/>
             <%
             ArrayList<Menu> lista = new ArrayList<Menu>();
@@ -50,8 +50,6 @@
                                 <td><%=m.getLink()%></td>
                                 <td> 
                                     <a href="alterar_menu.jsp?id=<%=m.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
-                                    <a href="dados_menu.jsp?id=<%=m.getId()%>"><input type="button" value="dados" name="dados" /></a>
-                                    <input type="button" value="agendar" name="agendar" />
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=m.getId()%>,'<%=m.getTitulo()%>')" name="excluir" /></a>
                                 </td>
                             </tr>
