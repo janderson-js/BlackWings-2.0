@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 27 de jul. de 2021, 17:05:37
-    Author     : Jandy
---%>
-
 <%@page import="model.ServicoDAO"%>
 <%@page import="org.apache.catalina.ant.ServerinfoTask"%>
 <%@page import="model.Servico"%>
@@ -72,7 +66,6 @@
                 </table>
             </form>
             <%
-
                 } catch (Exception e) {
                     out.print("Erro ao carregar os dados do servico: " + e);
 
