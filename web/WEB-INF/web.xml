@@ -16,6 +16,14 @@
         <servlet-name>InserirServico</servlet-name>
         <servlet-class>controller.InserirServico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluirServico</servlet-name>
+        <servlet-class>controller.ExcluirServico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarServico</servlet-name>
+        <servlet-class>controller.AlterarServico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -32,10 +40,17 @@
         <servlet-name>InserirServico</servlet-name>
         <url-pattern>/inserir_servico.do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirServico</servlet-name>
+        <url-pattern>/excluir_servico.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarServico</servlet-name>
+        <url-pattern>/alterar_servico.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
 </web-app>
