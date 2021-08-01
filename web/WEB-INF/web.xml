@@ -28,6 +28,10 @@
         <servlet-name>InserirMenu</servlet-name>
         <servlet-class>controller.InserirMenu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarMenu</servlet-name>
+        <servlet-class>controller.AlterarMenu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>InserirMenu</servlet-name>
         <url-pattern>/inserir_menu.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarMenu</servlet-name>
+        <url-pattern>/alterar_menu.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
