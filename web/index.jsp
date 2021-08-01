@@ -23,6 +23,7 @@
             <h1>Hello World!</h1>
             <a href="listar_cliente.jsp">Listar Cliente</a><br/>
             <a href="listar_servico.jsp">Listar Servico</a><br/>
+            <a href="listar_menu.jsp">Listar Menu</a><br/>
             <a href="index.jsp">HOME</a><br/>
         </main>
         <footer>
