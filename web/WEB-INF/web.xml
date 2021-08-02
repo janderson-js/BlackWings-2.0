@@ -36,6 +36,18 @@
         <servlet-name>ExcluirMenu</servlet-name>
         <servlet-class>controller.ExcluirMenu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserirPerfil</servlet-name>
+        <servlet-class>controller.InserirPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarPerfil</servlet-name>
+        <servlet-class>controller.AlterarPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirPerfil</servlet-name>
+        <servlet-class>controller.ExcluirPerfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>ExcluirMenu</servlet-name>
         <url-pattern>/excluir_menu.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserirPerfil</servlet-name>
+        <url-pattern>/inserir_perfil.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarPerfil</servlet-name>
+        <url-pattern>/alterar_perfil.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirPerfil</servlet-name>
+        <url-pattern>/excluir_perfil.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
