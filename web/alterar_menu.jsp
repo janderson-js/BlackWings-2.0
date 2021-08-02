@@ -1,9 +1,6 @@
-<%-- 
-    Document   : index
-    Created on : 27 de jul. de 2021, 17:05:37
-    Author     : Jandy
---%>
-
+<%@page import="model.MenuDAO"%>
+<%@page import="org.apache.catalina.ant.ServerinfoTask"%>
+<%@page import="model.Menu"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -21,10 +18,39 @@
         </header>
         <main>
             <h1>Hello World!</h1>
-            <a href="listar_cliente.jsp">Listar Cliente</a><br/>
-            <a href="listar_servico.jsp">Listar Servico</a><br/>
             <a href="listar_menu.jsp">Listar Menu</a><br/>
-            <a href="index.jsp">HOME</a><br/>
+            <a href="index.jsp">HOME</a><br/><br/>
+            <%
+                try {
+                    int id = Integer.parseInt(request.getParameter("id"));
+
+                    Menu s = new Menu();
+                    MenuDAO sDAO = new MenuDAO();
+
+                    s = sDAO.carregarPorId(id);
+            %>
+            <form name="inserirCliente" method="post" action="alterar_menu.do">
+                <input type="hidden" id="id" name="id" value="<%=s.getId()%>">
+                <table>
+                    <tr>
+                        <td>titulo</td>
+                        <td><input type="text" value="<%=s.getTitulo()%>" name="titulo" required></td>
+                    </tr>
+                    <tr>
+                        <td>Link</td>
+                        <td><input type="text" value="<%=s.getLink()%>" id="senha" name="link" minlength="8" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <input type="submit" value="Alterar"> </td>
+                    </tr>
+                </table>
+            </form>
+            <%
+                } catch (Exception e) {
+                    out.print("Erro ao carregar os dados do menu: " + e);
+
+                }
+            %>
         </main>
         <footer>
 
