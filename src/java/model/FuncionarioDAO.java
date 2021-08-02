@@ -95,7 +95,7 @@ public class FuncionarioDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
-
+ 
     public void alterarFuncionario(Funcionario f) throws Exception {
         String sql = "UPDATE Funcionario SET nome=?, matricula=?, senha=?, telefone=?, telefone_contato=?, cep=?, cidade=?, bairro=?, endereco=?, casa=?, "
                 + "complemento=?, data_nascimento=?, data_contrato=?, validade=?, saida=?, id_perfil=? WHERE id=?";
