@@ -49,9 +49,9 @@ public class AlterarFuncionario extends HttpServlet {
                 
                 int id = Integer.parseInt(request.getParameter("id"));
                 String nome = request.getParameter("nome");
-                Timestamp dataN = Timestamp.valueOf(request.getParameter("data"));
+                Timestamp dataN = Timestamp.valueOf(request.getParameter("dataN")+" 00:00:00");
                 String telefoneContato = request.getParameter("telefoneContato");
-                String telefone = request.getParameter("telefene");
+                String telefone = request.getParameter("telefone");
                 String matricula = request.getParameter("matricula");
                 String senha  = request.getParameter("senha");
                 String cep = request.getParameter("cep");
@@ -60,9 +60,9 @@ public class AlterarFuncionario extends HttpServlet {
                 String endereco = request.getParameter("endereco");
                 String casa = request.getParameter("casa");
                 String complemento = request.getParameter("complemento");
-                Timestamp dataCon = Timestamp.valueOf(request.getParameter("dataCon"));
-                Timestamp dataVali = Timestamp.valueOf(request.getParameter("dataVali"));
-                int idPerfil = Integer.parseInt(request.getParameter("id"));
+                Timestamp dataCon = Timestamp.valueOf(request.getParameter("dataCon")+" 00:00:00");
+                Timestamp dataVali = Timestamp.valueOf(request.getParameter("dataVali")+" 00:00:00");
+                int idPerfil = Integer.parseInt(request.getParameter("idPerfil"));
                 
                 p.setId(idPerfil);
                 
@@ -88,7 +88,7 @@ public class AlterarFuncionario extends HttpServlet {
                 response.sendRedirect("listar_funcionario.jsp");
                 
             } catch (Exception e) {
-                out.print("Erro ao  inserir o funcionario"+ e);          
+                out.print("Erro ao  alterar o funcionario"+ e);          
             }
             out.println("</body>");
             out.println("</html>");
