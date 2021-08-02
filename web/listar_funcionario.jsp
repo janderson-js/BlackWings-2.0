@@ -1,7 +1,7 @@
 <%@page import="java.text.ParseException"%>
-<%@page import="model.PerfilDAO"%>
+<%@page import="model.FuncionarioDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Perfil"%>
+<%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -14,34 +14,36 @@
         <title>Black Wings</title>
     </head>
     <body>
-        <h1>Lista Perfil!</h1>
+        <h1>Lista Funcionario!</h1>
         <a href="index.jsp">HOME</a><br/>
-        <a href="inserir_perfil.jsp">Inserir Perfil</a><br/><br/>
+        <a href="inserir_funcionario.jsp">Inserir Funcionario</a><br/><br/>
         <%
-            ArrayList<Perfil> lista = new ArrayList<Perfil>();
+            ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
             try{
-                PerfilDAO cDAO = new PerfilDAO();
-                lista = cDAO.listaPerfils();
+                FuncionarioDAO cDAO = new FuncionarioDAO();
+                lista = cDAO.listaFuncionarios();
                 %>
                 <table class="table  table   table-hover" style="background-color: white; text-align: center; ">
                     <thead class="table-dark">
                         <tr>
                             <th><strong>ID<strong></th>
-                            <th><strong>TITULO<strong></th>
-                            <th><strong>DESCRIÇÃO<strong></th>
+                            <th><strong>NOME<strong></th>
+                            <th><strong>CPF<strong></th>
                             <th><strong>OPÇÕES</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
-                          for(Perfil p : lista){%>
+                          for(Funcionario f : lista){%>
                             <tr>
-                                <td> <%=p.getId()%> </td>
-                                <td><%=p.getTitulo()%></td>
-                                <td><%=p.getDescricao()%></td>
+                                <td> <%=f.getId()%> </td>
+                                <td><%=f.getNome()%></td>
+                                <td><%=f.getMatricula()%></td>
                                 <td> 
-                                    <a href="alterar_perfil.jsp?id=<%=p.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
-                                    <a href="#"><input type="button" value="excluir" onclick="excluir(<%=p.getId()%>,'<%=p.getTitulo()%>')" name="excluir" /></a>
+                                    <a href="alterar_funcionario.jsp?id=<%=f.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
+                                    <a href="dados_funcionario.jsp?id=<%=f.getId()%>"><input type="button" value="dados" name="dados" /></a>
+                                    <input type="button" value="agendar" name="agendar" />
+                                    <a href="#"><input type="button" value="excluir" onclick="excluir(<%=f.getId()%>,'<%=f.getNome()%>')" name="excluir" /></a>
                                 </td>
                             </tr>
                         <% }%>
@@ -54,8 +56,8 @@
         %>
         <script>
             function excluir(id,nome){
-                if(confirm("Tem certeza que quer excluir o Perfil : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
-                    window.open("excluir_perfil.do?id="+ id, "_self")
+                if(confirm("Tem certeza que quer excluir o Funcionario : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
+                    window.open("excluir_funcionario.do?id="+ id, "_self")
                 }
             }
         </script>
