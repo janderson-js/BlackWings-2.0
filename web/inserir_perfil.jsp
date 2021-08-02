@@ -20,12 +20,25 @@
 
         </header>
         <main>
-            <h1>Hello World!</h1>
-            <a href="listar_cliente.jsp">Listar Cliente</a><br/>
-            <a href="listar_servico.jsp">Listar Servico</a><br/>
-            <a href="listar_menu.jsp">Listar Menu</a><br/>
+            <h1>Hello World!</h1> 
             <a href="listar_perfil.jsp">Listar Perfil</a><br/>
             <a href="index.jsp">HOME</a><br/>
+            
+            <form method="post" action="inserir_perfil.do" enctype="" >
+                <table>
+                    <tr>
+                        <td>Titulo</td>
+                        <td><input type="text" name="titulo" required=""></td>
+                    </tr>
+                    <tr>
+                        <td>Descrição</td>
+                        <td><input type="text" name="descricao" required=""></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Inserir Perfil"></td>
+                    </tr>
+                </table>
+            </form>
         </main>
         <footer>
 
