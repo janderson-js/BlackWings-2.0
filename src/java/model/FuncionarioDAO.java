@@ -20,7 +20,7 @@ public class FuncionarioDAO extends DataBase {
             f.setMatricula(rs.getString("matricula"));
             f.setSenha(rs.getString("senha"));
             f.setTelefone(rs.getString("telefone"));
-            f.setTelefoneContato(rs.getString("telefoneConatato"));
+            f.setTelefoneContato(rs.getString("telefone_contato"));
             f.setCep(rs.getString("cep"));
             f.setCidade(rs.getString("cidade"));
             f.setBairro(rs.getString("bairro"));
@@ -53,7 +53,7 @@ public class FuncionarioDAO extends DataBase {
             f.setMatricula(rs.getString("matricula"));
             f.setSenha(rs.getString("senha"));
             f.setTelefone(rs.getString("telefone"));
-            f.setTelefoneContato(rs.getString("telefoneConatato"));
+            f.setTelefoneContato(rs.getString("telefone_contato"));
             f.setCep(rs.getString("cep"));
             f.setCidade(rs.getString("cidade"));
             f.setBairro(rs.getString("bairro"));
@@ -98,7 +98,7 @@ public class FuncionarioDAO extends DataBase {
 
     public void alterarFuncionario(Funcionario f) throws Exception {
         String sql = "UPDATE Funcionario SET nome=?, matricula=?, senha=?, telefone=?, telefone_contato=?, cep=?, cidade=?, bairro=?, endereco=?, casa=?, "
-                + "complemento=?, data_nascimento=?, data_contrato=?, validade=?, saida=? id_perfil=? WHERE id=?";
+                + "complemento=?, data_nascimento=?, data_contrato=?, validade=?, saida=?, id_perfil=? WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, f.getNome());
