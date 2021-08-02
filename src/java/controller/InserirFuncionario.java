@@ -48,9 +48,9 @@ public class InserirFuncionario extends HttpServlet {
                 Perfil p = new Perfil();
                 
                 String nome = request.getParameter("nome");
-                Timestamp dataN = Timestamp.valueOf(request.getParameter("data"));
+                String dataN = request.getParameter("dataN");
                 String telefoneContato = request.getParameter("telefoneContato");
-                String telefone = request.getParameter("telefene");
+                String telefone = request.getParameter("telefone");
                 String matricula = request.getParameter("matricula");
                 String senha  = request.getParameter("senha");
                 String cep = request.getParameter("cep");
@@ -59,14 +59,19 @@ public class InserirFuncionario extends HttpServlet {
                 String endereco = request.getParameter("endereco");
                 String casa = request.getParameter("casa");
                 String complemento = request.getParameter("complemento");
-                Timestamp dataCon = Timestamp.valueOf(request.getParameter("dataCon"));
-                Timestamp dataVali = Timestamp.valueOf(request.getParameter("dataVali"));
-                int idPerfil = Integer.parseInt(request.getParameter("id"));
+                String dataCon =request.getParameter("dataCon");
+                String dataVali = request.getParameter("dataVali");
+                int idPerfil = Integer.parseInt(request.getParameter("idPerfil"));
                 
+                
+                Timestamp dataNascimento = Timestamp.valueOf(dataN+" 00:00:00");
+                Timestamp dataContrato = Timestamp.valueOf(dataCon+" 00:00:00");
+                Timestamp validade = Timestamp.valueOf(dataVali+" 00:00:00");
+                      
                 p.setId(idPerfil);
                 
                 f.setNome(nome);
-                f.setDataNascimento(dataN);
+                f.setDataNascimento(dataNascimento);
                 f.setTelefoneContato(telefoneContato);
                 f.setTelefone(telefone);
                 f.setMatricula(matricula);
@@ -77,8 +82,8 @@ public class InserirFuncionario extends HttpServlet {
                 f.setEndereco(endereco);
                 f.setCasa(casa);
                 f.setComplemento(complemento);
-                f.setDataContrato(dataCon);
-                f.setValidadeContrato(dataVali);
+                f.setDataContrato(dataContrato);
+                f.setValidadeContrato(validade);
                 f.setPerifl(p);
                 
                 fDAO.inserirFuncionario(f);
