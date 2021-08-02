@@ -39,7 +39,7 @@ public class PerfilDAO extends DataBase {
     }
     
     public void inserirPerfil(Perfil p) throws Exception{
-        String sql = "INSET INTO Perfil (titulo, descricao, valor) VALUES (?,?,?)";
+        String sql = "INSERT INTO Perfil (titulo, descricao) VALUES (?,?)";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, p.getTitulo());
@@ -49,7 +49,7 @@ public class PerfilDAO extends DataBase {
     }
     
     public void alterarPerfil(Perfil p) throws Exception{
-        String sql = "UPDATE Perfil SET titulo=?, descricao=?, valor=? WHERE id=?";
+        String sql = "UPDATE Perfil SET titulo=?, descricao=? WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, p.getTitulo());
@@ -59,7 +59,7 @@ public class PerfilDAO extends DataBase {
         this.desconectar();
     }
     public void deletarPerfil(int id) throws Exception{
-        String sql = "DELETE * FROM Perfil WHERE id=?";
+        String sql = "DELETE FROM Perfil WHERE id=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, id);
