@@ -48,6 +48,18 @@
         <servlet-name>ExcluirPerfil</servlet-name>
         <servlet-class>controller.ExcluirPerfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InserirFuncionario</servlet-name>
+        <servlet-class>controller.InserirFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarFuncionario</servlet-name>
+        <servlet-class>controller.AlterarFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirFuncionario</servlet-name>
+        <servlet-class>controller.ExcluirFuncionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>ExcluirPerfil</servlet-name>
         <url-pattern>/excluir_perfil.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserirFuncionario</servlet-name>
+        <url-pattern>/inserir_funcionario.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarFuncionario</servlet-name>
+        <url-pattern>/alterar_funcionario.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirFuncionario</servlet-name>
+        <url-pattern>/excluir_funcionario.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

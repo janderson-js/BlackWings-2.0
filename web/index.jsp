@@ -25,6 +25,7 @@
             <a href="listar_servico.jsp">Listar Servico</a><br/>
             <a href="listar_menu.jsp">Listar Menu</a><br/>
             <a href="listar_perfil.jsp">Listar Perfil</a><br/>
+            <a href="listar_funcionario.jsp">Listar Funcionario</a><br/>
             <a href="index.jsp">HOME</a><br/>
         </main>
         <footer>
