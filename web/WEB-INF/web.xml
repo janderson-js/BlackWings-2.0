@@ -32,6 +32,10 @@
         <servlet-name>AlterarMenu</servlet-name>
         <servlet-class>controller.AlterarMenu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluirMenu</servlet-name>
+        <servlet-class>controller.ExcluirMenu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>AlterarMenu</servlet-name>
         <url-pattern>/alterar_menu.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirMenu</servlet-name>
+        <url-pattern>/excluir_menu.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
