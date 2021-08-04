@@ -87,4 +87,25 @@ public class ClienteDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
+    
+    public Cliente loginCliente(String login, String senha) throws Exception{
+        String sql = "SELECT * FROM cliente WHERE cpf=?";
+        Cliente c = new Cliente();
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);   
+        pstm.setString(1, login);
+        ResultSet rs = pstm.executeQuery();
+        if(rs.next()){
+            if(senha.equals(rs.getString("senha"))){
+                c.setNome(rs.getString("nome"));
+                c.setCpf(rs.getString("cpf"));
+                c.setSenha(rs.getString("senha"));
+                c.setTelefoneContato(rs.getString("telefone_contato"));
+                c.setTelefone(rs.getString("telefone"));
+                c.setId(rs.getInt("id"));
+            }
+        }
+        this.desconectar();
+        return c;
+    }
 }
