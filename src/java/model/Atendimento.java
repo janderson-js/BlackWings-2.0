@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Atendimento {
     private int id;
@@ -15,7 +16,16 @@ public class Atendimento {
     private Timestamp dataAtendimento;
     private Timestamp registroAtendimento;
     private Timestamp cancelamento;
+    private ArrayList<Servico> servico;
 
+    public ArrayList<Servico> getServico() {
+        return servico;
+    }
+
+    public void setServico(ArrayList<Servico> servico) {
+        this.servico = servico;
+    }
+    
     public int getId() {
         return id;
     }

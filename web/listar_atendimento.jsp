@@ -1,7 +1,7 @@
 <%@page import="java.text.ParseException"%>
-<%@page import="model.ClienteDAO"%>
+<%@page import="model.AtendimentoDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Cliente"%>
+<%@page import="model.Atendimento"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -14,36 +14,35 @@
         <title>Black Wings</title>
     </head>
     <body>
-        <h1>Lista Cliente!</h1>
+        <h1>Lista Atendimento!</h1>
         <a href="index.jsp">HOME</a><br/>
-        <a href="inserir_cliente.jsp">Inserir Cliente</a><br/><br/>
+        <a href="listar_cliente.jsp">Inserir Atendimento</a><br/><br/>
         <%
-            ArrayList<Cliente> lista = new ArrayList<Cliente>();
+            ArrayList<Atendimento> lista = new ArrayList<Atendimento>();
             try{
-                ClienteDAO cDAO = new ClienteDAO();
-                lista = cDAO.listaClientes();
+                AtendimentoDAO aDAO = new AtendimentoDAO();
+                lista = aDAO.listaAtendimentos();
                 %>
                 <table class="table  table   table-hover" style="background-color: white; text-align: center; ">
                     <thead class="table-dark">
                         <tr>
                             <th><strong>ID<strong></th>
                             <th><strong>NOME<strong></th>
-                            <th><strong>CPF<strong></th>
+                            <th><strong>DATA<strong></th>
                             <th><strong>OPÇÕES</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
-                          for(Cliente c : lista){%>
+                          for(Atendimento a : lista){%>
                             <tr>
-                                <td> <%=c.getId()%> </td>
-                                <td><%=c.getNome()%></td>
-                                <td><%=c.getCpf()%></td>
+                                <td> <%=a.getId()%> </td>
+                                <td><%=a.getCliente().getNome()%></td>
+                                <td><%=a.getData()%></td>
                                 <td> 
-                                    <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
-                                    <a href="dados_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="dados" name="dados" /></a>
-                                    <a href="listar_servico.jsp"><input type="button" value="agendar" name="agendar" /></a>
-                                    <a href="#"><input type="button" value="excluir" onclick="excluir(<%=c.getId()%>,'<%=c.getNome()%>')" name="excluir" /></a>
+                                    <a href="dados_atendimento.jsp?id=<%=a.getId()%>"><input type="button" value="dados" name="dados" /></a>
+                                    <input type="button" value="agendar" name="agendar" />
+                                    <a href="#"><input type="button" value="excluir" onclick="excluir(<%=a.getId()%>,'<%=a.getCliente().getNome()%>')" name="excluir" /></a>
                                 </td>
                             </tr>
                         <% }%>
@@ -56,8 +55,8 @@
         %>
         <script>
             function excluir(id,nome){
-                if(confirm("Tem certeza que quer excluir o Cliente : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
-                    window.open("excluir_cliente.do?id="+ id, "_self")
+                if(confirm("Tem certeza que quer excluir o Atendimento : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
+                    window.open("excluir_atendimento.do?id="+ id, "_self")
                 }
             }
         </script>

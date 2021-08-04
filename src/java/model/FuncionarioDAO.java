@@ -130,4 +130,33 @@ public class FuncionarioDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
+    
+     public Funcionario loginFuncionario(String login, String senha) throws Exception{
+        String sql = "SELECT * FROM funcionario WHERE matricula=?";
+        Funcionario f = new Funcionario();
+        PerfilDAO pDAO = new PerfilDAO();
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);   
+        pstm.setString(1, login);
+        ResultSet rs = pstm.executeQuery();
+        if(rs.next()){
+            if(senha.equals(rs.getString("senha"))){
+                f.setId(rs.getInt("id"));
+                f.setNome(rs.getString("nome"));
+                f.setMatricula(rs.getString("matricula"));
+                f.setSenha(rs.getString("senha"));
+                f.setTelefoneContato(rs.getString("telefone_contato"));
+                f.setTelefone(rs.getString("telefone"));
+                f.setCep(rs.getString("cep"));
+                f.setCidade(rs.getString("cidade"));
+                f.setBairro(rs.getString("bairro"));
+                f.setEndereco(rs.getString("endereco"));
+                f.setCasa(rs.getString("casa"));
+                f.setComplemento(rs.getString("complemento"));
+                f.setPerifl(pDAO.carregarPorId(rs.getInt("id_perfil")));
+            }
+        }
+        this.desconectar();
+        return f;
+    }
 }

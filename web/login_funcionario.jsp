@@ -1,11 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 27 de jul. de 2021, 17:05:37
-    Author     : Jandy
---%>
-
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,14 +12,24 @@
 
         </header>
         <main>
-            <h1>Hello World!</h1>
-            <a href="listar_cliente.jsp">Listar Cliente</a><br/>
-            <a href="listar_servico.jsp">Listar Servico</a><br/>
-            <a href="listar_menu.jsp">Listar Menu</a><br/>
-            <a href="listar_perfil.jsp">Listar Perfil</a><br/>
-            <a href="listar_funcionario.jsp">Listar Funcionario</a><br/>
-            <a href="listar_atendimento.jsp">Listar Atendimento</a><br/>
-            <a href="index.jsp">HOME</a><br/>
+            <h1>Login Funcionario</h1>
+            <form method="post" action="login_funcionario.do">
+                <table border="1">
+                        <tr>
+                            <th>Login</th>
+                            <th><input type="type" name="login"> </th>
+                        </tr>
+              
+                        <tr>
+                            <td>Senha</td>
+                            <td><input type="password" name="senha"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Submit"></td>
+                        </tr>
+                </table>
+  
+            </form>
         </main>
         <footer>
 
