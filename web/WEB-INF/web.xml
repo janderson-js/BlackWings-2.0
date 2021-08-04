@@ -60,6 +60,14 @@
         <servlet-name>ExcluirFuncionario</servlet-name>
         <servlet-class>controller.ExcluirFuncionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginCliente</servlet-name>
+        <servlet-class>controller.LoginCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginFuncionario</servlet-name>
+        <servlet-class>controller.LoginFuncionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>ExcluirFuncionario</servlet-name>
         <url-pattern>/excluir_funcionario.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginCliente</servlet-name>
+        <url-pattern>/login_cliente.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginFuncionario</servlet-name>
+        <url-pattern>/login_funcionario.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
