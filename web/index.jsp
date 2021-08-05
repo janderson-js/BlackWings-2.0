@@ -26,7 +26,10 @@
             <a href="listar_menu.jsp">Listar Menu</a><br/>
             <a href="listar_perfil.jsp">Listar Perfil</a><br/>
             <a href="listar_funcionario.jsp">Listar Funcionario</a><br/>
-            <a href="listar_atendimento.jsp">Listar Atendimento</a><br/>
+            <a href="listar_atendimento.jsp">Listar Atendimento</a><br/><br/>
+            <a href="login_cliente.jsp">Login cliente</a><br/><br/>
+            <a href="login_funcionario.jsp">Login Funcionario</a><br/><br/>
+            <a href="sair.jsp">Sair</a><br/><br/>
             <a href="index.jsp">HOME</a><br/>
         </main>
         <footer>
