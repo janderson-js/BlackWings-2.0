@@ -1,3 +1,10 @@
+<%
+
+    if (session.getAttribute("cliente") != null || session.getAttribute("funcionario") != null) {
+            session = request.getSession();
+            response.sendRedirect("index.jsp");
+        }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -15,20 +22,20 @@
             <h1>Login Cliente</h1>
             <form method="post" action="login_cliente.do">
                 <table border="1">
-                        <tr>
-                            <th>Login</th>
-                            <th><input type="type" name="login"> </th>
-                        </tr>
-              
-                        <tr>
-                            <td>Senha</td>
-                            <td><input type="password" name="senha"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Submit"></td>
-                        </tr>
+                    <tr>
+                        <th>Login</th>
+                        <th><input type="type" name="login"> </th>
+                    </tr>
+
+                    <tr>
+                        <td>Senha</td>
+                        <td><input type="password" name="senha"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Submit"></td>
+                    </tr>
                 </table>
-  
+
             </form>
         </main>
         <footer>

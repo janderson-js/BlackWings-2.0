@@ -34,7 +34,7 @@ public class LoginCliente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(false);
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -50,7 +50,7 @@ public class LoginCliente extends HttpServlet {
                 Cliente c = new Cliente();
                 c = cDAO.loginCliente(login, senha);
                 if(c.getId() > 0){
-                    session.setAttribute("Cliente", c);
+                    session.setAttribute("cliente", c);
                     response.sendRedirect("index.jsp");
                 }else{
                     response.sendRedirect("login_cliente.jsp");
