@@ -1,3 +1,6 @@
+<%@page import="model.Servico"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.ParseException"%>
 <%@page import="model.AtendimentoDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -19,26 +22,43 @@
         <a href="listar_cliente.jsp">Inserir Atendimento</a><br/><br/>
         <%
             ArrayList<Atendimento> lista = new ArrayList<Atendimento>();
+            ArrayList<Servico> servicos = new ArrayList<>();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
             try{
                 AtendimentoDAO aDAO = new AtendimentoDAO();
                 lista = aDAO.listaAtendimentos();
                 %>
-                <table class="table  table   table-hover" style="background-color: white; text-align: center; ">
+                <table class="table  table   table-hover" style="background-color: white; text-align: center;vertical-align: middle; ">
                     <thead class="table-dark">
                         <tr>
                             <th><strong>ID<strong></th>
                             <th><strong>NOME<strong></th>
                             <th><strong>DATA<strong></th>
+                            <th><strong>SERVIÇO(S)<strong></th>
+                            <th><strong>VALOR<strong></th>            
                             <th><strong>OPÇÕES</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
+                            double valor = 0;
                           for(Atendimento a : lista){%>
                             <tr>
                                 <td> <%=a.getId()%> </td>
                                 <td><%=a.getCliente().getNome()%></td>
-                                <td><%=a.getData()%></td>
+                                <td><%=sdf.format(a.getData()) +" "+sdf2.format(a.getHora())%></td>
+                                <td>
+                                    <%
+                                        for (Servico s : a.getServico()) {
+                                    %>
+                                    <label><%=s.getNome()%></label></br>
+                                    <%
+                                        valor = valor + s.getValor();
+                                            }
+                                    %>
+                                </td>
+                                <td><%=valor%></td>
                                 <td> 
                                     <a href="dados_atendimento.jsp?id=<%=a.getId()%>"><input type="button" value="dados" name="dados" /></a>
                                     <input type="button" value="agendar" name="agendar" />
