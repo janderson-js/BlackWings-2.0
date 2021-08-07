@@ -42,7 +42,7 @@
                                 <td> 
                                     <a href="alterar_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
                                     <a href="dados_cliente.jsp?id=<%=c.getId()%>"><input type="button" value="dados" name="dados" /></a>
-                                    <a href="listar_servico.jsp"><input type="button" value="agendar" name="agendar" /></a>
+                                    <a href="servico.jsp?id=<%=c.getId()%>"><input type="button" value="agendar" name="agendar" /></a>
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=c.getId()%>,'<%=c.getNome()%>')" name="excluir" /></a>
                                 </td>
                             </tr>

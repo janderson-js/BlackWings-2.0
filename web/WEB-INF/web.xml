@@ -68,6 +68,10 @@
         <servlet-name>LoginFuncionario</servlet-name>
         <servlet-class>controller.LoginFuncionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GerenciarAtendimento</servlet-name>
+        <servlet-class>controller.GerenciarAtendimento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>LoginFuncionario</servlet-name>
         <url-pattern>/login_funcionario.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerenciarAtendimento</servlet-name>
+        <url-pattern>/gerenciar_atendimento.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
