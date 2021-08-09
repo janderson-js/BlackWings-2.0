@@ -22,7 +22,6 @@
         <a href="listar_cliente.jsp">Inserir Atendimento</a><br/><br/>
         <%
             ArrayList<Atendimento> lista = new ArrayList<Atendimento>();
-            ArrayList<Servico> servicos = new ArrayList<>();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
             try{
@@ -42,12 +41,14 @@
                     </thead>
                     <tbody>
                         <%
-                            double valor = 0;
-                          for(Atendimento a : lista){%>
+                           
+                          for(Atendimento a : lista){
+                               double valor = 0;
+                        %>
                             <tr>
                                 <td> <%=a.getId()%> </td>
                                 <td><%=a.getCliente().getNome()%></td>
-                                <td><%=sdf.format(a.getData()) +" "+sdf2.format(a.getHora())%></td>
+                                <td><%=sdf.format(a.getData()) +" às "+sdf2.format(a.getHora())%></td>
                                 <td>
                                     <%
                                         for (Servico s : a.getServico()) {
@@ -61,7 +62,6 @@
                                 <td><%=valor%></td>
                                 <td> 
                                     <a href="dados_atendimento.jsp?id=<%=a.getId()%>"><input type="button" value="dados" name="dados" /></a>
-                                    <input type="button" value="agendar" name="agendar" />
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=a.getId()%>,'<%=a.getCliente().getNome()%>')" name="excluir" /></a>
                                 </td>
                             </tr>
