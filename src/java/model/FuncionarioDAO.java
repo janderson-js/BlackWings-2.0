@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class FuncionarioDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
- 
+
     public void alterarFuncionario(Funcionario f) throws Exception {
         String sql = "UPDATE Funcionario SET nome=?, matricula=?, senha=?, telefone=?, telefone_contato=?, cep=?, cidade=?, bairro=?, endereco=?, casa=?, "
                 + "complemento=?, data_nascimento=?, data_contrato=?, validade=?, saida=?, id_perfil=? WHERE id=?";
@@ -130,17 +131,17 @@ public class FuncionarioDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
-    
-     public Funcionario loginFuncionario(String login, String senha) throws Exception{
+
+    public Funcionario loginFuncionario(String login, String senha) throws Exception {
         String sql = "SELECT * FROM funcionario WHERE matricula=?";
         Funcionario f = new Funcionario();
         PerfilDAO pDAO = new PerfilDAO();
         this.conectar();
-        PreparedStatement pstm = conn.prepareStatement(sql);   
+        PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, login);
         ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
-            if(senha.equals(rs.getString("senha"))){
+        if (rs.next()) {
+            if (senha.equals(rs.getString("senha"))) {
                 f.setId(rs.getInt("id"));
                 f.setNome(rs.getString("nome"));
                 f.setMatricula(rs.getString("matricula"));
@@ -158,5 +159,23 @@ public class FuncionarioDAO extends DataBase {
         }
         this.desconectar();
         return f;
+    }
+
+    public ArrayList<Atendimento> horariosFuncionario(int idFuncionario, Timestamp data) throws Exception {
+        ArrayList<Atendimento> lista = new ArrayList<>();
+        String sql = "SELECT data, hora FROM atendimento WHERE id_funcionario=? AND data=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idFuncionario);
+        pstm.setTimestamp(2, data);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Atendimento a = new Atendimento();
+            a.setData(rs.getTimestamp("data"));
+            a.setHora(rs.getTimestamp("hora"));
+            lista.add(a);
+        }
+        this.desconectar();
+        return lista;
     }
 }
