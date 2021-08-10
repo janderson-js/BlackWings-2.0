@@ -42,6 +42,7 @@
                                 <td> 
                                     <a href="alterar_perfil.jsp?id=<%=p.getId()%>"><input type="button" value="alterar" name="alterar" /></a>
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=p.getId()%>,'<%=p.getTitulo()%>')" name="excluir" /></a>
+                                    <a href="gerenciar_perfil_menu.jsp?id=<%=p.getId()%>"><input type="button" value="Menu" name="alterar" /></a>
                                 </td>
                             </tr>
                         <% }%>
