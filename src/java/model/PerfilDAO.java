@@ -66,4 +66,22 @@ public class PerfilDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
+    public void vincularPerfilMenu(int idPerfil, int idMenu)throws Exception{
+        String sql = "INSERT INTO perfil_menu (id_perfil,id_menu) VALUES (?,?)";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idPerfil);
+        pstm.setInt(2, idMenu);
+        pstm.execute();
+        this.desconectar();
+    }
+    public void desvincularPerfilMenu(int idPerfil, int idMenu) throws Exception{
+        String sql = "DELETE FROM perfil_menu WHERE id_perfil=? AND id_menu=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idPerfil);
+        pstm.setInt(2, idMenu);
+        pstm.execute();
+        this.desconectar();
+    }
 }
