@@ -66,4 +66,38 @@ public class MenuDAO extends DataBase {
         pstm.execute();
         this.desconectar();
     }
+    public ArrayList<Menu> listarMenusPerfil(int id_perfil) throws Exception {
+        ArrayList<Menu> lista = new ArrayList<Menu>();
+        String sql = "SELECT m.* FROM menu as m, perfil_menu as pm WHERE m.id=pm.id_menu AND pm.id_perfil=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, id_perfil);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Menu m = new Menu();
+            m.setId(rs.getInt("id"));
+            m.setTitulo(rs.getString("titulo"));
+            lista.add(m);
+        }
+        this.desconectar();
+        return lista;
+    }
+
+    public ArrayList<Menu> listarMenusNaoPerfil(int id_perfil) throws Exception {
+        ArrayList<Menu> lista = new ArrayList<Menu>();
+        String sql = "SELECT * FROM menu "
+                + "WHERE id NOT IN(SELECT pm.id_menu FROM perfil_menu as pm WHERE pm.id_perfil=?)";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, id_perfil);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Menu m = new Menu();
+            m.setId(rs.getInt("id"));
+            m.setTitulo(rs.getString("titulo"));
+            lista.add(m);
+        }
+        this.desconectar();
+        return lista;
+    }
 }

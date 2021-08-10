@@ -34,7 +34,7 @@
                 listaHorario = fDAO.horariosFuncionario(atendimento.getFuncionario().getId(), atendimento.getData());
         %>
         <form method="post" action="gerenciar_atendimento.do?op=3">
-            <%
+        <%
                 int size = horarios.length;
                 Date horaAtual = new Date(System.currentTimeMillis());
                 String[] horas = new String[size];
@@ -45,8 +45,10 @@
                 for (int i = 0; i < horarios.length; i++) {
                     horariosFormatado[i] = df.parse(data + "  " + horarios[i]);
                     disponivel[i] = "";
-                    if (horariosFormatado[i].getTime() < horaAtual.getTime()) {
-                        disponivel[i] = "disabled";
+                    if(data.equals(sdf2.format(atendimento.getData()))){
+                        if (horariosFormatado[i].getTime() < horaAtual.getTime()) {
+                            disponivel[i] = "disabled";
+                        }
                     }
                 }
                 for (int i = 0; i < horarios.length; i++) {
@@ -58,12 +60,12 @@
                         }
                     }
                     if (!horas[i].equals("1") && !disponivel[i].equals("disabled")) {
-            %>
+        %>
             <input type="radio" <%=disponivel[i]%> name="hora" id="hora" value="<%=horarios[i]%>" /><label for="funcionario"><%=sdf.format(sdf.parse(horarios[i]))%></label></br>
-            <%
+        <%
                     }
                 }
-            %>
+        %>
             <select id="pagamento" name="pagamento" required="">
                 <option value="">Selecione...</option>
                 <option value="Cartão">Cartão</option>

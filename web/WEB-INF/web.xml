@@ -72,6 +72,10 @@
         <servlet-name>GerenciarAtendimento</servlet-name>
         <servlet-class>controller.GerenciarAtendimento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GerenciarPerfilMenu</servlet-name>
+        <servlet-class>controller.GerenciarPerfilMenu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InserirCliente</servlet-name>
         <url-pattern>/inserir_cliente.do</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>GerenciarAtendimento</servlet-name>
         <url-pattern>/gerenciar_atendimento.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GerenciarPerfilMenu</servlet-name>
+        <url-pattern>/gerenciar_perfil_menu.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
