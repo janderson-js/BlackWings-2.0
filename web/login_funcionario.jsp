@@ -1,9 +1,4 @@
-<%
-    if (session.getAttribute("cliente") != null || session.getAttribute("funcionario") != null) {
-        session = request.getSession();
-        response.sendRedirect("index.jsp");
-    }
-%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,9 +9,6 @@
         <title>Black Wings</title>
     </head>
     <body>
-        <header>
-
-        </header>
         <main>
             <h1>Login Funcionario</h1>
             <form method="post" action="login_funcionario.do">

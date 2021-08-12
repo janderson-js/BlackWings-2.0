@@ -14,6 +14,10 @@
         <title>Black Wings</title>
     </head>
     <body>
+        <header>
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
+        </header>
         <h1>Lista Perfil!</h1>
         <a href="index.jsp">HOME</a><br/>
         <a href="inserir_perfil.jsp">Inserir Perfil</a><br/><br/>

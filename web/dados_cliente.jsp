@@ -18,6 +18,10 @@
         <title>Black Wings</title>
     </head>
     <body>
+        <header>
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
+        </header>
         <h1>Dados do cliente!</h1>
         <a href="listar_cliente.jsp">Listar Cliente</a><br/><br/>
         <%

@@ -1,9 +1,5 @@
 <%
 
-    if (session.getAttribute("cliente") != null || session.getAttribute("funcionario") != null) {
-            session = request.getSession();
-            response.sendRedirect("index.jsp");
-        }
 %>
 <html>
     <head>

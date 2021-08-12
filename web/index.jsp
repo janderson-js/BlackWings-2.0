@@ -17,7 +17,8 @@
     </head>
     <body>
         <header>
-
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
         </header>
         <main>
             <h1>Hello World!</h1>

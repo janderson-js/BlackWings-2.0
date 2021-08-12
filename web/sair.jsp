@@ -11,10 +11,10 @@
 
             if (user[0].equals("funcionario")) {
                 session.removeAttribute("funcionario");
-                response.sendRedirect("login_funcionario.jsp");
+                response.sendRedirect("index.jsp");
             } else if (user[0].equals("cliente")) {
                 session.removeAttribute("cliente");
-                response.sendRedirect("login_cliente.jsp");
+                response.sendRedirect("index.jsp");
             }
         }else{
             response.sendRedirect("index.jsp");
