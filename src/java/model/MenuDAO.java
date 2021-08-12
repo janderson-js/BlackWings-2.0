@@ -77,6 +77,7 @@ public class MenuDAO extends DataBase {
             Menu m = new Menu();
             m.setId(rs.getInt("id"));
             m.setTitulo(rs.getString("titulo"));
+            m.setLink(rs.getString("link"));
             lista.add(m);
         }
         this.desconectar();
