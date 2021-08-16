@@ -22,6 +22,10 @@
         <title>Black Wings</title>
     </head>
     <body>
+        <header>
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
+        </header>
         <h1>Dados do funcionario!</h1>
         <a href="listar_funcionario.jsp">Listar Funcionario</a><br/><br/>
         <%

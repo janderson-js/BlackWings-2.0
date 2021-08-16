@@ -17,16 +17,20 @@
         <title>Black Wings</title>
     </head>
     <body>
+        <header>
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
+        </header>
         <h1>Lista Atendimento!</h1>
         <a href="index.jsp">HOME</a><br/>
         <a href="listar_cliente.jsp">Inserir Atendimento</a><br/><br/>
         <%
-            ArrayList<Atendimento> lista = new ArrayList<Atendimento>();
+            ArrayList<Atendimento> lista = new ArrayList<>();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
             try{
                 AtendimentoDAO aDAO = new AtendimentoDAO();
-                lista = aDAO.listaAtendimentos();
+                lista = aDAO.listaAtendimentos(); 
                 %>
                 <table class="table  table   table-hover" style="background-color: white; text-align: center;vertical-align: middle; ">
                     <thead class="table-dark">
@@ -43,7 +47,6 @@
                         <%
                            
                           for(Atendimento a : lista){
-                               double valor = 0;
                         %>
                             <tr>
                                 <td> <%=a.getId()%> </td>
@@ -55,11 +58,10 @@
                                     %>
                                     <label><%=s.getNome()%></label></br>
                                     <%
-                                        valor = valor + s.getValor();
-                                            }
+                                    }
                                     %>
                                 </td>
-                                <td><%=valor%></td>
+                                <td><%=a.getPreco()%></td>
                                 <td> 
                                     <a href="dados_atendimento.jsp?id=<%=a.getId()%>"><input type="button" value="dados" name="dados" /></a>
                                     <a href="#"><input type="button" value="excluir" onclick="excluir(<%=a.getId()%>,'<%=a.getCliente().getNome()%>')" name="excluir" /></a>
@@ -76,7 +78,7 @@
         <script>
             function excluir(id,nome){
                 if(confirm("Tem certeza que quer excluir o Atendimento : "+ nome+"?\n\nIsso apagarar todos os registro relacionados a ele tambem!!")){
-                    window.open("excluir_atendimento.do?id="+ id, "_self")
+                    window.open("excluir_atendimento.do?id="+ id, "_self");
                 }
             }
         </script>

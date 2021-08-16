@@ -13,8 +13,9 @@
         <title>Black Wings</title>
     </head>
     <body>
-        <header>
-
+       <header>
+            <%@include file="head.jsp"%>
+            <%@include file="validacao.jsp"%>
         </header>
         <main>
             <h1>Hello World!</h1>

@@ -31,7 +31,6 @@
                     }
                 } else if (f.getPerifl().getTitulo().equals("Admin")) {
                     acesso = true;
-                    out.print(url + " / " + acesso + " / " + f.getNome());
                 }
                 redirect = "login_funcionario.jsp";
                 
@@ -47,7 +46,7 @@
             }
             
         } else {
-            response.sendRedirect("login_cliente.jsp");
+            response.sendRedirect("index.jsp");
         }
     }
 

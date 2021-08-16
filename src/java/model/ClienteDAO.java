@@ -1,5 +1,6 @@
 package model;
 
+import java.security.spec.PSSParameterSpec;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -107,5 +108,61 @@ public class ClienteDAO extends DataBase {
         }
         this.desconectar();
         return c;
+    }
+    
+    public ArrayList<Cliente> listarClienteInativo() throws  Exception {
+        String sql = "SELECT * FROM Cliente WHERE status='Inativo'";
+        ArrayList<Cliente> lista = new ArrayList<>();
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Cliente c = new Cliente();
+            c.setId(rs.getInt("id"));
+            c.setNome(rs.getString("nome"));
+            c.setCpf(rs.getString("cpf"));
+            c.setSenha(rs.getString("senha"));
+            c.setTelefone(rs.getString("telefone"));
+            c.setTelefoneContato(rs.getString("telefone_contato"));
+            c.setTermos(rs.getString("termos"));
+            c.setStatus(rs.getString("status"));
+            c.setDataCadastro(rs.getTimestamp("data_cadastro"));
+            lista.add(c);
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public ArrayList<Cliente> buscarCliente(String cpf) throws Exception{
+        ArrayList<Cliente> lista = new ArrayList<>();
+        String sql = "SELECT * FROM Cliente WHERE cpf=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+             Cliente c = new Cliente();
+            c.setId(rs.getInt("id"));
+            c.setNome(rs.getString("nome"));
+            c.setCpf(rs.getString("cpf"));
+            c.setSenha(rs.getString("senha"));
+            c.setTelefone(rs.getString("telefone"));
+            c.setTelefoneContato(rs.getString("telefone_contato"));
+            c.setTermos(rs.getString("termos"));
+            c.setStatus(rs.getString("status"));
+            c.setDataCadastro(rs.getTimestamp("data_cadastro"));
+            lista.add(c);  
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public void alterarStatusCliente(Cliente c) throws Exception{
+        String sql = "UPDATE Cliente SET status=? WHERE id=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, c.getStatus());
+        pstm.setInt(2, c.getId());
+        pstm.execute();
+        this.desconectar();
     }
 }

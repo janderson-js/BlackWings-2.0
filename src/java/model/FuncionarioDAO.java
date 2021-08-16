@@ -163,7 +163,7 @@ public class FuncionarioDAO extends DataBase {
 
     public ArrayList<Atendimento> horariosFuncionario(int idFuncionario, Timestamp data) throws Exception {
         ArrayList<Atendimento> lista = new ArrayList<>();
-        String sql = "SELECT data, hora FROM atendimento WHERE id_funcionario=? AND data=?";
+        String sql = "SELECT data, hora FROM atendimento WHERE id_funcionario=? AND data=? AND status='Agendado'";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idFuncionario);
@@ -177,5 +177,140 @@ public class FuncionarioDAO extends DataBase {
         }
         this.desconectar();
         return lista;
+    }
+    
+    public ArrayList<Funcionario> listarFuncionarioInativo() throws  Exception {
+        String sql = "SELECT * FROM Funcionario WHERE status='Inativo'";
+        PerfilDAO pDAO = new PerfilDAO();
+        ArrayList<Funcionario> lista = new ArrayList<>();
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Funcionario f = new Funcionario();
+            f.setId(rs.getInt("id"));
+            f.setNome(rs.getString("nome"));
+            f.setMatricula(rs.getString("matricula"));
+            f.setSenha(rs.getString("senha"));
+            f.setTelefone(rs.getString("telefone"));
+            f.setTelefoneContato(rs.getString("telefone_contato"));
+            f.setCep(rs.getString("cep"));
+            f.setCidade(rs.getString("cidade"));
+            f.setBairro(rs.getString("bairro"));
+            f.setEndereco(rs.getString("endereco"));
+            f.setCasa(rs.getString("casa"));
+            f.setComplemento(rs.getString("complemento"));
+            f.setStatus(rs.getString("status"));
+            f.setDataContrato(rs.getTimestamp("data_contrato"));
+            f.setValidadeContrato(rs.getTimestamp("validade"));
+            f.setSaida(rs.getTimestamp("saida"));
+            f.setDataNascimento(rs.getTimestamp("data_nascimento"));
+            f.setPerifl(pDAO.carregarPorId(rs.getInt("id_perfil")));
+            lista.add(f);
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public ArrayList<Funcionario> buscarFuncionario(String matricula) throws Exception{
+        ArrayList<Funcionario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM Funcionario WHERE matricula=?";
+        PerfilDAO pDAO = new PerfilDAO();
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+         while (rs.next()) {
+            Funcionario f = new Funcionario();
+            f.setId(rs.getInt("id"));
+            f.setNome(rs.getString("nome"));
+            f.setMatricula(rs.getString("matricula"));
+            f.setSenha(rs.getString("senha"));
+            f.setTelefone(rs.getString("telefone"));
+            f.setTelefoneContato(rs.getString("telefone_contato"));
+            f.setCep(rs.getString("cep"));
+            f.setCidade(rs.getString("cidade"));
+            f.setBairro(rs.getString("bairro"));
+            f.setEndereco(rs.getString("endereco"));
+            f.setCasa(rs.getString("casa"));
+            f.setComplemento(rs.getString("complemento"));
+            f.setStatus(rs.getString("status"));
+            f.setDataContrato(rs.getTimestamp("data_contrato"));
+            f.setValidadeContrato(rs.getTimestamp("validade"));
+            f.setSaida(rs.getTimestamp("saida"));
+            f.setDataNascimento(rs.getTimestamp("data_nascimento"));
+            f.setPerifl(pDAO.carregarPorId(rs.getInt("id_perfil")));
+            lista.add(f);
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public void alterarStatusFuncionario(Funcionario f) throws Exception{
+        String sql = "UPDATE Funcionario SET status=? WHERE id=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, f.getStatus());
+        pstm.setInt(2, f.getId());
+        pstm.execute();
+        this.desconectar();
+    }
+    
+    public ArrayList<Atendimento> funcionarioServicoDoDia(int id) throws Exception{
+        ArrayList<Atendimento> lista = new ArrayList<>();   
+        String sql = "SELECT * FROM Atendimento WHERE status='Agendado' AND data=CURDATE() AND id_funcionario=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, id);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {            
+            Atendimento a = new Atendimento();
+            ClienteDAO cDAO = new ClienteDAO();
+            AtendimentoDAO aDAO = new AtendimentoDAO();
+            
+            a.setId(rs.getInt("id"));
+            a.setCliente(cDAO.carregarPorId(rs.getInt("id_cliente")));
+            a.setFuncionario(this.carregarPorId(rs.getInt("id_funcionario")));
+            a.setData(rs.getTimestamp("data"));
+            a.setHora(rs.getTimestamp("hora"));
+            a.setServico(aDAO.carregaServicos(id));
+            a.setPreco(aDAO.valorServico(rs.getInt("id")));
+            lista.add(a);
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public ArrayList<Atendimento> funcionarioServicoAgendado(int id) throws Exception{
+        ArrayList<Atendimento> lista = new ArrayList<>();   
+        String sql = "SELECT * FROM Atendimento WHERE status='Agendado' AND data!=CURDATE() AND id_funcionario=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, id);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {            
+            Atendimento a = new Atendimento();
+            ClienteDAO cDAO = new ClienteDAO();
+            AtendimentoDAO aDAO = new AtendimentoDAO();
+            
+            a.setId(rs.getInt("id"));
+            a.setCliente(cDAO.carregarPorId(rs.getInt("id_cliente")));
+            a.setFuncionario(this.carregarPorId(rs.getInt("id_funcionario")));
+            a.setData(rs.getTimestamp("data"));
+            a.setHora(rs.getTimestamp("hora"));
+            a.setServico(aDAO.carregaServicos(id));
+            a.setPreco(aDAO.valorServico(rs.getInt("id")));
+            lista.add(a);
+        }
+        this.desconectar();
+        return lista;
+    }
+    
+    public void servicoRealizado(int id) throws Exception {
+        String sql = "UPDATE Atendimento SET status='Realizado' WHERE id=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(2, id);
+        pstm.execute();
+        this.desconectar();
     }
 }
